@@ -11,7 +11,7 @@ from utils import *
 
 parser = argparse.ArgumentParser(description='command line options')
 parser.add_argument('--model_to_load', action="store", dest="model_to_load", default='DQN_ep10', help="model name")
-parser.add_argument('--stock_name', action="store", dest="stock_name", default='^GSPC_2018', help="stock name")
+parser.add_argument('--stock_name', action="store", dest="stock_name", default='ETH-USD_2021-2022', help="stock name")
 parser.add_argument('--initial_balance', action="store", dest="initial_balance", default=50000, type=int, help='initial balance')
 inputs = parser.parse_args()
 
@@ -87,6 +87,6 @@ while portfolio_return == 0: # a hack to avoid stationary case
             portfolio_return = evaluate_portfolio_performance(agent, logging)
 
 if display:
-    # plot_portfolio_transaction_history(stock_name, agent)
-    # plot_portfolio_performance_comparison(stock_name, agent)
+    plot_portfolio_transaction_history(stock_name, agent)
+    plot_portfolio_performance_comparison(stock_name, agent)
     plot_all(stock_name, agent)
